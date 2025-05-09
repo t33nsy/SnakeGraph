@@ -1,0 +1,229 @@
+{
+  "edgeCount": 22,
+  "edgeList": [
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 25660,
+      "target": 20484,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 67403,
+      "target": 25660,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 20484,
+      "target": 99935,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 63724,
+      "target": 67403,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 63724,
+      "target": 68111,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 77751,
+      "target": 68111,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 77362,
+      "target": 77751,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 68111,
+      "target": 63724,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 67403,
+      "target": 99935,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 67403,
+      "target": 63724,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 25660,
+      "target": 67403,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 20484,
+      "target": 25660,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 99935,
+      "target": 20484,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 99935,
+      "target": 67403,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 68111,
+      "target": 68111,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 77751,
+      "target": 68111,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 68111,
+      "target": 77751,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 68111,
+      "target": 77751,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 77751,
+      "target": 77362,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 68111,
+      "target": 20484,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 20484,
+      "target": 68111,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 20484,
+      "target": 20484,
+      "weight": 0
+    }
+  ],
+  "id": "e9bd4035-258a-4b2e-b6b5-1c6a85a0c44f",
+  "isDirect": true,
+  "isNamed": false,
+  "vertexCount": 8,
+  "vertexList": [
+    {
+      "color": "GRAY",
+      "id": 99935,
+      "label": "1",
+      "weight": 0,
+      "xCoordinate": 109,
+      "yCoordinate": 540
+    },
+    {
+      "color": "GRAY",
+      "id": 20484,
+      "label": "4",
+      "weight": 0,
+      "xCoordinate": 411,
+      "yCoordinate": 626
+    },
+    {
+      "color": "GRAY",
+      "id": 25660,
+      "label": "5",
+      "weight": 0,
+      "xCoordinate": 679,
+      "yCoordinate": 546
+    },
+    {
+      "color": "GRAY",
+      "id": 67403,
+      "label": "6",
+      "weight": 0,
+      "xCoordinate": 708,
+      "yCoordinate": 153
+    },
+    {
+      "color": "GRAY",
+      "id": 63724,
+      "label": "7",
+      "weight": 0,
+      "xCoordinate": 455,
+      "yCoordinate": 60
+    },
+    {
+      "color": "GRAY",
+      "id": 68111,
+      "label": "8",
+      "weight": 0,
+      "xCoordinate": 279,
+      "yCoordinate": 311
+    },
+    {
+      "color": "GRAY",
+      "id": 77362,
+      "label": "9",
+      "weight": 0,
+      "xCoordinate": 81,
+      "yCoordinate": 218
+    },
+    {
+      "color": "GRAY",
+      "id": 77751,
+      "label": "10",
+      "weight": 0,
+      "xCoordinate": 318,
+      "yCoordinate": 70
+    }
+  ]
+}
