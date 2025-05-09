@@ -1,0 +1,187 @@
+{
+  "edgeCount": 16,
+  "edgeList": [
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 25660,
+      "target": 20484,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 67403,
+      "target": 25660,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 20484,
+      "target": 99935,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 63724,
+      "target": 67403,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 63724,
+      "target": 68111,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 77362,
+      "target": 77751,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 68111,
+      "target": 63724,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 67403,
+      "target": 63724,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 25660,
+      "target": 67403,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 20484,
+      "target": 25660,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 99935,
+      "target": 20484,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 68111,
+      "target": 68111,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 77751,
+      "target": 77362,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 20484,
+      "target": 20484,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 77751,
+      "target": 68111,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 68111,
+      "target": 77751,
+      "weight": 0
+    }
+  ],
+  "id": "7cc2d604-4c61-4818-a32c-bbb42d9567e8",
+  "isDirect": false,
+  "isNamed": false,
+  "vertexCount": 8,
+  "vertexList": [
+    {
+      "color": "GRAY",
+      "id": 99935,
+      "label": "1",
+      "weight": 0,
+      "xCoordinate": 109,
+      "yCoordinate": 540
+    },
+    {
+      "color": "GRAY",
+      "id": 20484,
+      "label": "4",
+      "weight": 0,
+      "xCoordinate": 411,
+      "yCoordinate": 626
+    },
+    {
+      "color": "GRAY",
+      "id": 25660,
+      "label": "5",
+      "weight": 0,
+      "xCoordinate": 679,
+      "yCoordinate": 546
+    },
+    {
+      "color": "GRAY",
+      "id": 67403,
+      "label": "6",
+      "weight": 0,
+      "xCoordinate": 1098,
+      "yCoordinate": 159
+    },
+    {
+      "color": "GRAY",
+      "id": 63724,
+      "label": "7",
+      "weight": 0,
+      "xCoordinate": 775,
+      "yCoordinate": -48
+    },
+    {
+      "color": "GRAY",
+      "id": 68111,
+      "label": "8",
+      "weight": 0,
+      "xCoordinate": 411,
+      "yCoordinate": -85
+    },
+    {
+      "color": "GRAY",
+      "id": 77362,
+      "label": "9",
+      "weight": 0,
+      "xCoordinate": 81,
+      "yCoordinate": 218
+    },
+    {
+      "color": "GRAY",
+      "id": 77751,
+      "label": "10",
+      "weight": 0,
+      "xCoordinate": 314,
+      "yCoordinate": 218
+    }
+  ]
+}
