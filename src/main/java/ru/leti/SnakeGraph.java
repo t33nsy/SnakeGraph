@@ -2,6 +2,7 @@ package ru.leti;
 
 import ru.leti.wise.task.graph.model.Edge;
 import ru.leti.wise.task.graph.model.Graph;
+import ru.leti.wise.task.graph.model.Vertex;
 import ru.leti.wise.task.plugin.graph.GraphProperty;
 
 import java.util.*;
@@ -36,109 +37,76 @@ public class SnakeGraph implements GraphProperty {
         return adjacency;
     }
 
-    private List<String> generateBinaryStrings(int n) {
-        List<String> result = new ArrayList<>();
-        for (int i = 0; i < (1 << n); ++i) {
-            String bin = Integer.toBinaryString(i);
-            result.add("0".repeat(n - bin.length()) + bin);
+    private List<int[]> generateBinaryVectors(int n) {
+        List<int[]> result = new ArrayList<>();
+        for (int i = 0; i < (1 << n); i++) {
+            int[] bits = new int[n];
+            for (int j = 0; j < n; j++) {
+                bits[n - j - 1] = (i >> j) & 1;
+            }
+            result.add(bits);
         }
         return result;
     }
 
-    private List<String> positionsOfOnes(String s) {
-        List<String> pos = new ArrayList<>();
-        for (int i = 0; i < s.length(); ++i) {
-            if (s.charAt(i) == '1') pos.add(String.valueOf(i));
+    private boolean validateEmbedding(Map<Integer, int[]> assignment, List<Edge> edges) {
+        for (Edge edge : edges) {
+            int[] u = assignment.get(edge.getSource());
+            int[] v = assignment.get(edge.getTarget());
+            if (hammingDistance(u, v) != 1) return false;
         }
-        return pos;
-    }
-
-    private String flipBit(String s, String... positions) {
-        char[] chars = s.toCharArray();
-        for (String pos : positions) {
-            int i = Integer.parseInt(pos);
-            chars[i] = chars[i] == '0' ? '1' : '0';
-        }
-        return new String(chars);
-    }
-
-    private int hammingDistance(String a, String b) {
-        int count = 0;
-        for (int i = 0; i < a.length(); ++i) {
-            if (a.charAt(i) != b.charAt(i)) ++count;
-        }
-        return count;
-    }
-
-    private boolean isHyperCube(Graph graph) {
-        int nVertices = graph.getVertexCount();
-        int n = -1;
-        // num of vertices is power of 2
-        for (int i = 0; i <= 20; ++i) {
-            if ((1 << i) == nVertices) {
-                n = i;
-                break;
-            }
-        }
-        if (n == -1) return false;
-        // labels
-        Map<Integer, List<Integer>> adjacency = buildAdjacencyList(graph);
-        Map<Integer, String> labels = new HashMap<>();
-        Map<String, Integer> inverseLabels = new HashMap<>();
-        int start = adjacency.keySet().iterator().next();
-        labels.put(start, "0".repeat(n));
-        inverseLabels.put("0".repeat(n), start);
-        // first neighbours have 1 "1"
-        List<Integer> neighbours = adjacency.get(start);
-        for (int i = 0; i < neighbours.size(); ++i) {
-            String label = "0".repeat(i) + "1" + "0".repeat(n - i - 1);
-            labels.put(neighbours.get(i), label);
-            inverseLabels.put(label, neighbours.get(i));
-        }
-        // go to others
-        List<String> allBinaryStrings = generateBinaryStrings(n);
-        Collections.sort(allBinaryStrings);
-        for (String z : allBinaryStrings) {
-            if (inverseLabels.containsKey(z)) continue;
-            List<String> ones = positionsOfOnes(z);
-            if (ones.size() < 2) continue;
-            // u, v, w generating
-            for (int i = 0; i < ones.size(); ++i) {
-                for (int j = i + 1; j < ones.size(); ++j) {
-                    String u = flipBit(z, ones.get(i));
-                    String v = flipBit(z, ones.get(j));
-                    String w = flipBit(z, ones.get(i), ones.get(j));
-                    if (inverseLabels.containsKey(u) && inverseLabels.containsKey(v) && inverseLabels.containsKey(w)) {
-                        int uNode = inverseLabels.get(u);
-                        int vNode = inverseLabels.get(v);
-                        int wNode = inverseLabels.get(w);
-                        List<Integer> common = new ArrayList<>(adjacency.get(uNode));
-                        common.retainAll(adjacency.get(vNode));
-                        if (common.size() != 2) continue;
-
-                        for (int candidate : common) {
-                            if (candidate != wNode && !labels.containsKey(candidate)) {
-                                labels.put(candidate, z);
-                                inverseLabels.put(z, candidate);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        // hamming distance == 1
-        for (int u : adjacency.keySet()) {
-            for (int v : adjacency.get(u)) {
-                if (u < v) {
-                    String a = labels.get(u);
-                    String b = labels.get(v);
-                    if (hammingDistance(a, b) != 1) return false;
-                }
-            }
-        }
-
         return true;
+    }
+
+    private boolean backtrack(Map<Integer, int[]> assignment, Set<Integer> usedIndices,
+                              List<Vertex> vertices, List<int[]> hypercubeCoords,
+                              Map<Integer, List<Integer>> adjacency,
+                              List<Edge> edges, int idx) {
+        if (idx == vertices.size()) {
+            return validateEmbedding(assignment, edges);
+        }
+        Vertex current = vertices.get(idx);
+        for (int i = 0; i < hypercubeCoords.size(); i++) {
+            if (usedIndices.contains(i)) continue;
+            assignment.put(current.getId(), hypercubeCoords.get(i));
+            usedIndices.add(i);
+            if (isPartialValid(assignment, adjacency, current.getId())) {
+                if (backtrack(assignment, usedIndices, vertices, hypercubeCoords, adjacency, edges, idx + 1)) {
+                    return true;
+                }
+            }
+            assignment.remove(current.getId());
+            usedIndices.remove(i);
+        }
+        return false;
+    }
+
+    private boolean isPartialValid(Map<Integer, int[]> assignment, Map<Integer, List<Integer>> adjacency, int currentId) {
+        int[] currentVec = assignment.get(currentId);
+        for (int neighbor : adjacency.get(currentId)) {
+            if (!assignment.containsKey(neighbor)) continue;
+            int[] neighborVec = assignment.get(neighbor);
+            if (hammingDistance(currentVec, neighborVec) != 1) return false;
+        }
+        return true;
+    }
+
+    private int hammingDistance(int[] a, int[] b) {
+        int dist = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) dist++;
+        }
+        return dist;
+    }
+
+    public boolean isEmbeddable(Graph graph, int n) {
+        int size = 1 << n;
+        if (graph.getVertexCount() != size) return false;
+        List<int[]> hypercubeCoords = generateBinaryVectors(n);
+        List<Vertex> vertices = graph.getVertexList();
+        List<Edge> edges = graph.getEdgeList();
+        Map<Integer, List<Integer>> adjacency = buildAdjacencyList(graph);
+        return backtrack(new HashMap<>(), new HashSet<>(), vertices, hypercubeCoords, adjacency, edges, 0);
     }
 
     private boolean hasHamiltonianPath(Graph graph) {
@@ -161,6 +129,11 @@ public class SnakeGraph implements GraphProperty {
     @Override
     public boolean run(Graph graph) {
         if (!hasHamiltonianPath(graph)) return false;
-        return isHyperCube(graph);
+        int n = -1;
+        for (int i = 0; i < 20; ++i) {
+            if (1 << i == graph.getVertexCount()) n = i;
+        }
+        if (n == -1) return false;
+        return isEmbeddable(graph, n);
     }
 }
