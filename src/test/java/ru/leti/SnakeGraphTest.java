@@ -89,4 +89,20 @@ public class SnakeGraphTest {
         var graph10 = FileLoader.loadGraphFromJson("src/test/resources/graph10.json");
         assertThat(snakeGraph.run(graph10)).isFalse();
     }
+
+    // Лестница (почти 3-куб)
+    @Test
+    public void GraphTest11() throws FileNotFoundException {
+        SnakeGraph snakeGraph = new SnakeGraph();
+        var graph11 = FileLoader.loadGraphFromJson("src/test/resources/graph11.json");
+        assertThat(snakeGraph.run(graph11)).isTrue();
+    }
+
+    // Лестница (почти 4-куб)
+    @Test
+    public void GraphTest12() throws FileNotFoundException {
+        SnakeGraph snakeGraph = new SnakeGraph();
+        var graph12 = FileLoader.loadGraphFromJson("src/test/resources/graph12.json");
+        assertThat(snakeGraph.run(graph12)).isTrue();
+    }
 }
