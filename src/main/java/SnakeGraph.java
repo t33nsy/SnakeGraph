@@ -1,5 +1,3 @@
-package ru.leti;
-
 import ru.leti.wise.task.graph.model.Edge;
 import ru.leti.wise.task.graph.model.Graph;
 import ru.leti.wise.task.graph.model.Vertex;
@@ -110,7 +108,7 @@ public class SnakeGraph implements GraphProperty {
     }
 
     // проверка, можно ли вложить граф в n-куб (отобразить граф на гиперкуб), где n - степень двойки
-    public boolean isEmbeddable(Graph graph, int n) {
+    private boolean isEmbeddable(Graph graph, int n) {
         int size = 1 << n;
         if (graph.getVertexCount() != size) return false; // не соответствует кол-ву вершин гиперкуба
         List<int[]> hypercubeCoords = generateBinaryVectors(n); // генерация всех координат n-куба

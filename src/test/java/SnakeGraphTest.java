@@ -1,5 +1,3 @@
-package ru.leti;
-
 import ru.leti.wise.task.graph.util.FileLoader;
 import org.junit.jupiter.api.Test;
 
